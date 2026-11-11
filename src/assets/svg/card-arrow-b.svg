@@ -1,0 +1,26 @@
+<svg width="186" height="189" viewBox="0 0 186 189" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g filter="url(#filter0_d_0_39)">
+<use xlink:href="#stroke0_0_39" fill="#0D0DFF"/>
+<mask id="stroke1_0_39" fill="white">
+<use xlink:href="#stroke0_0_39"/>
+</mask>
+<path d="M111.097 54.2336L144.655 20.6742L167.648 43.6672L134.089 77.2259H181.548V109.742H134.089L167.648 143.301L144.655 166.293L111.097 132.734V180.194H78.5806V132.734L45.0213 166.293L22.0296 143.301L55.5883 109.742H8.12898V77.2259H55.5883L22.029 43.6665L45.0219 20.6749L78.5806 54.2336V6.77425H111.097V54.2336Z" stroke-width="1.35484" stroke="#0808FF" mask="url(#stroke1_0_39)"/>
+</g>
+<mask id="stroke2_0_39" fill="white">
+<path d="M104.323 47.4594L137.881 13.9L160.874 36.893L127.315 70.4517H174.774V102.968H127.315L160.874 136.527L137.881 159.519L104.323 125.96V173.419H71.8064V125.96L38.247 159.519L15.2554 136.527L48.8141 102.968H1.35473V70.4517H48.8141L15.2547 36.8923L38.2477 13.9007L71.8064 47.4594V0H104.323V47.4594Z"/>
+</mask>
+<path d="M104.323 47.4593L137.881 13.9L160.874 36.893L127.315 70.4517H174.774V102.968H127.315L160.874 136.527L137.881 159.519L104.323 125.96V173.419H71.8064V125.96L38.247 159.519L15.2554 136.527L48.8141 102.968H1.35473V70.4517H48.8141L15.2547 36.8923L38.2477 13.9007L71.8064 47.4593V0H104.323V47.4593Z" stroke-width="2.70968" stroke="#0265FE" mask="url(#stroke2_0_39)"/>
+<defs>
+<filter id="filter0_d_0_39" x="-6.11008e-05" y="3.38715" width="185.613" height="185.613" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="-2.03008" dy="2.70677"/>
+<feGaussianBlur stdDeviation="3.04511"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_39"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_39" result="shape"/>
+</filter>
+<path id="stroke0_0_39" d="M111.097 54.2336L144.655 20.6742L167.648 43.6672L134.089 77.2259H181.548V109.742H134.089L167.648 143.301L144.655 166.293L111.097 132.734V180.194H78.5806V132.734L45.0213 166.293L22.0296 143.301L55.5883 109.742H8.12898V77.2259H55.5883L22.029 43.6665L45.0219 20.6749L78.5806 54.2336V6.77425H111.097V54.2336Z"/>
+</defs>
+</svg>

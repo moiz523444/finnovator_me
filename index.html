@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Finnovator builds innovative digital solutions that help businesses grow, improve efficiency, and succeed in a rapidly evolving digital world." />
+    <title>Finnovator | Innovation, Strategy &amp; Technology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link rel="preload" href="/fonts/InterTight-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
+    <script>
+      // 1rem = 10 design px; the 1860px-wide Figma sections fill the full screen width (desktop only; tablet/mobile use CSS values)
+      (function () {
+        function fit() {
+          var w = document.documentElement.clientWidth;
+          document.documentElement.style.fontSize = w >= 1280 ? w / 186 + 'px' : '';
+        }
+        fit();
+        window.addEventListener('resize', fit);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

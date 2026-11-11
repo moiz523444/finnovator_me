@@ -1,0 +1,90 @@
+// Shared building blocks used across sections
+import { useEffect, useRef } from 'react'
+
+/**
+ * Looping, muted background video cropped exactly like the Figma image fill.
+ * crop = [sx, tx, sy, ty] from Figma's imageTransform: the visible part of the video is
+ * x ∈ [tx, tx+sx], y ∈ [ty, ty+sy] (normalized). Plays only while on screen.
+ */
+export function CropVideo({ src, crop = [1, 0, 1, 0], className = '', children }) {
+  const ref = useRef(null)
+  const [sx, tx, sy, ty] = crop
+
+  useEffect(() => {
+    const v = ref.current
+    if (!v) return
+    if (!('IntersectionObserver' in window)) {
+      v.play().catch(() => {})
+      return
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (v.preload !== 'auto') v.preload = 'auto'
+          v.play().catch(() => {})
+        } else {
+          v.pause()
+        }
+      },
+      { rootMargin: '200px 0px' },
+    )
+    io.observe(v)
+    return () => io.disconnect()
+  }, [])
+
+  return (
+    <div className={`crop-video ${className}`} aria-hidden="true">
+      <video
+        ref={ref}
+        src={src}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        disablePictureInPicture
+        style={{
+          width: `${100 / sx}%`,
+          height: `${100 / sy}%`,
+          left: `${(-tx / sx) * 100}%`,
+          top: `${(-ty / sy) * 100}%`,
+        }}
+      />
+      {children}
+    </div>
+  )
+}
+
+export function Button({ children, variant = 'solid', href = '#', className = '', ...rest }) {
+  const label = typeof children === 'string' ? children : null
+  return (
+    <a href={href} className={`btn btn--${variant} ${className}`} data-magnetic {...rest}>
+      {label ? (
+        <span className="btn__label" data-text={label}>
+          <span>{label}</span>
+        </span>
+      ) : (
+        children
+      )}
+    </a>
+  )
+}
+
+const WORDMARK_PATH =
+  'M165.711 63.5204H46.3233V148.183C63.5204 125.033 89.316 114.119 112.466 113.789H146.199V153.474H118.749C85.6781 153.474 46.3233 168.026 46.3233 212.341V253.68H3V22.1813H165.711V63.5204ZM213.044 50.9533C199.815 50.9533 189.232 40.0398 189.232 27.142C189.232 13.9135 199.815 3 213.044 3C226.272 3 236.855 13.9135 236.855 27.142C236.855 40.0398 226.272 50.9533 213.044 50.9533ZM233.879 253.68H192.209V75.0953H233.879V253.68ZM377.454 69.8039C413.502 69.8039 446.243 94.6074 446.243 143.884V253.68H404.904V151.159C404.904 122.387 384.73 106.844 362.903 106.844C338.761 106.844 314.95 127.017 314.95 162.073V253.68H273.28V74.7646H314.95V111.804C328.509 85.6781 351.99 69.8039 377.454 69.8039ZM588.025 69.8039C624.073 69.8039 656.813 94.6074 656.813 143.884V253.68H615.474V151.159C615.474 122.387 595.301 106.844 573.474 106.844C549.332 106.844 525.521 127.017 525.521 162.073V253.68H483.851V74.7646H525.521V111.804C539.08 85.6781 562.56 69.8039 588.025 69.8039ZM780.076 69.8039C834.313 69.8039 874.66 112.135 874.66 164.388C874.66 216.31 834.313 258.641 780.076 258.641C726.17 258.641 685.823 216.31 685.823 164.388C685.823 112.135 726.17 69.8039 780.076 69.8039ZM780.076 219.617C813.809 219.617 831.667 192.829 831.667 164.388C831.667 135.616 813.809 108.828 780.076 108.828C746.674 108.828 728.816 135.616 728.816 164.388C728.816 192.829 746.674 219.617 780.076 219.617ZM1042.55 75.0953H1085.55L1036.6 253.68H977.072C946.647 253.68 928.788 235.16 923.828 212.341L892.741 75.0953H935.402L961.859 191.506C964.836 204.404 975.088 214.325 988.316 214.325H1004.19L1042.55 75.0953ZM1193.44 69.8039C1249.33 69.8039 1287.69 108.828 1287.69 164.057V253.68H1246.02V223.255C1236.76 241.774 1215.26 258.641 1188.81 258.641C1137.21 258.641 1101.17 220.94 1101.17 164.057C1101.17 111.143 1136.88 69.8039 1193.44 69.8039ZM1193.44 217.302C1224.85 217.302 1246.02 191.837 1246.02 164.057C1246.02 132.639 1224.85 111.143 1193.44 111.143C1159.7 111.143 1144.49 137.6 1144.49 164.057C1144.49 190.845 1159.7 217.302 1193.44 217.302ZM1383.08 215.979H1405.57V253.68H1369.19C1346.7 253.68 1322.23 243.097 1322.23 210.357V41.0319H1363.9V75.0953H1400.28V111.143H1363.9V196.798C1363.9 209.365 1371.83 215.979 1383.08 215.979ZM1517.72 69.8039C1571.96 69.8039 1612.3 112.135 1612.3 164.388C1612.3 216.31 1571.96 258.641 1517.72 258.641C1463.81 258.641 1423.47 216.31 1423.47 164.388C1423.47 112.135 1463.81 69.8039 1517.72 69.8039ZM1517.72 219.617C1551.45 219.617 1569.31 192.829 1569.31 164.388C1569.31 135.616 1551.45 108.828 1517.72 108.828C1484.32 108.828 1466.46 135.616 1466.46 164.388C1466.46 192.829 1484.32 219.617 1517.72 219.617ZM1696.86 75.0953H1763V114.45H1712.4C1689.91 114.45 1682.97 123.71 1682.97 143.884V253.68H1641.3V130.655C1641.3 97.5838 1663.79 75.0953 1696.86 75.0953Z'
+
+/**
+ * The big outlined "Finnovator" wordmark.
+ * variant: 'hero' (stroke white <-> blue), 'card' (stroke fades in/out), 'footer' (outline <-> solid fill)
+ */
+export function Wordmark({ variant = 'hero', className = '' }) {
+  return (
+    <svg
+      className={`wordmark wordmark--${variant} ${className}`}
+      viewBox="0 0 1766 262"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path d={WORDMARK_PATH} pathLength={1} />
+    </svg>
+  )
+}
