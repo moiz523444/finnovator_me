@@ -22,7 +22,7 @@ export default function Hero() {
       <div className="hero__content">
         <div className="hero__copy">
           <h1 className="hero__title">
-            <span className="hero__title-lg">Innovation,</span>{' '}
+            <span className="hero__title-lg">Innovation</span>{' '}
             <span className="hero__title-sm">Strategy &amp; Technology</span>
           </h1>
           <p className="text hero__text">
